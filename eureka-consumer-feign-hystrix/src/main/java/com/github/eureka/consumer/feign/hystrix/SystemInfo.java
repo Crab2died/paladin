@@ -1,4 +1,4 @@
-package com.github.eureka.consumer.feign;
+package com.github.eureka.consumer.feign.hystrix;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class SystemInfo {
 
     @Autowired
-    private EurekaClient client;
+    private EurekaHystrixClient eurekaHystrixClient;
 
     @GetMapping("/consumer")
     public String sysInfo() {
-        return client.sysInfo();
+        return eurekaHystrixClient.consumer();
     }
 }
